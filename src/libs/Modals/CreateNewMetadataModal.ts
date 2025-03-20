@@ -138,19 +138,17 @@ export class CreateNewMetadataModal {
                     )
                     .add('dropdown', (subtype) => {
                         subtype.setOptions([
-                                {
-                                    key: 'none',
-                                    value: this.__ITranslationService.get(
-                                        'None',
-                                    ),
-                                },
-                                {
-                                    key: 'Cluster',
-                                    value: this.__ITranslationService.get(
-                                        'Metadata Cluster',
-                                    ),
-                                },
-                            ]);
+                            {
+                                key: 'none',
+                                value: this.__ITranslationService.get('None'),
+                            },
+                            {
+                                key: 'Cluster',
+                                value: this.__ITranslationService.get(
+                                    'Metadata Cluster',
+                                ),
+                            },
+                        ]);
                     });
             })
 
