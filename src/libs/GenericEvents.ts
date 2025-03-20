@@ -51,7 +51,7 @@ type RegisteredEvent<T extends ICallback, K extends keyof T['events']> = {
  *     console.log(data);
  *     return 100;
  * });
-
+ 
  * // Fire event one with a string as input and a number as output
  * eventsInstance.fireEvent('myEvent1', 'Fire event 1', (result) => {
  *     console.log(result); // Result is a number

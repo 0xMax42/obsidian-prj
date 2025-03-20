@@ -72,11 +72,12 @@ export class HelperObsidian implements IHelperObsidian {
         const newLeaf = workspace.getLeaf(true);
         await newLeaf.openFile(file);
         const view = newLeaf.getViewState();
+
         if (view.state) {
             view.state.mode = 'preview';
         } else {
             this._logger?.warn(
-                'View state is undefined, cannot set mode to preview'
+                'View state is undefined, cannot set mode to preview',
             );
         }
         newLeaf.setViewState(view);

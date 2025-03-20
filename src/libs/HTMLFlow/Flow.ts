@@ -2,6 +2,7 @@ import { ImplementsStatic } from 'src/classes/decorators/ImplementsStatic';
 import type { ILogger, ILogger_ } from 'src/interfaces/ILogger';
 import { Register } from 'ts-injex';
 import { Inject } from 'ts-injex';
+import { DIComponent, isLoaded, shouldRemoveOnUnload } from '../DIComponent';
 import {
     IFlow_,
     IFlow,
@@ -23,7 +24,6 @@ import type {
     IFlowEventCallback,
     IFlowThenCallback,
 } from './types/IFlowDelegates';
-import { DIComponent, isLoaded, shouldRemoveOnUnload } from '../DIComponent';
 
 /**
  * A HTML Fluent API class.
