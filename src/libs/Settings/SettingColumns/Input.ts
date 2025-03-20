@@ -199,6 +199,11 @@ export class Input
         this[onEvent]('common-window-classes', (classes: string[]) => {
             this._suggester?.suggestContainerEl?.classList.add(...classes);
         });
+
+        this[onEvent]('loaded', () => {
+            if (this.elements.inputEl.value !== '')
+                this.emitResult(this.elements.inputEl.value);
+        });
     }
 
     /**
