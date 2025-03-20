@@ -52,9 +52,6 @@ export class CreateNewMetadataModal {
     @Inject('IModal_', (modal: IModal_) => new modal())
     private readonly _modal!: IModal;
 
-    private readonly _result: Partial<Record<keyof PrjDocumentData, unknown>> =
-        {};
-
     /**
      * Creates an instance of the CreateNewMetadataModal class
      */
@@ -140,11 +137,7 @@ export class CreateNewMetadataModal {
                         ),
                     )
                     .add('dropdown', (subtype) => {
-                        subtype
-                            .onChange((item) => {
-                                this._result.subType = item.key;
-                            })
-                            .setOptions([
+                        subtype.setOptions([
                                 {
                                     key: 'none',
                                     value: this.__ITranslationService.get(
