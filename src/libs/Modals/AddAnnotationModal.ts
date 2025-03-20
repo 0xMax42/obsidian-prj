@@ -6,12 +6,9 @@ import { IPrj } from 'src/interfaces/IPrj';
 import { Inject } from 'ts-injex';
 import { resolve } from 'ts-injex';
 import type { ForceConstructor } from 'ts-injex';
-import type {
-    IModal_,
-    IModal,
-} from './Modal/interfaces/IModal';
 import { FileType } from '../FileType/FileType';
 import type { IHelperGeneral_ } from '../Helper/General';
+import type { IModal_, IModal } from './Modal/interfaces/IModal';
 import type { IHelperObsidian } from '../Helper/interfaces/IHelperObsidian';
 import type ITranslationService from '../TranslationService/interfaces/ITranslationService';
 
