@@ -33,15 +33,14 @@ export default class AddAnnotationModal {
     private readonly _IHelperGeneral!: IHelperGeneral_;
     @Inject('IHelperObsidian')
     private readonly _IHelperObsidian!: IHelperObsidian;
-    @Inject('IModal_')
-    private readonly _ICustomModal_!: IModal_;
     @Inject('ITranslationService')
     private readonly _ITranslationService!: ITranslationService;
     @Inject('Obsidian.Setting_')
     // eslint-disable-next-line @typescript-eslint/naming-convention
     private readonly _Setting_!: ForceConstructor<Setting>;
 
-    private readonly _customModal: IModal = new this._ICustomModal_();
+    @Inject('IModal_', (x: IModal_) => new x())
+    private readonly _customModal: IModal;
 
     private _activeFile?: TFile;
     protected _annotation: Annotation = {
