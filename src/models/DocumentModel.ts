@@ -185,10 +185,18 @@ export class DocumentModel
      * @returns The wikilink of the linked file.
      */
     public setLinkedFile(
-        file: TFile | undefined,
+        file: TFile | string | undefined,
         path?: string,
     ): string | undefined {
-        if (!file || !(file instanceof TFile)) return;
+        if (file !== undefined && typeof file === 'string') {
+            file = this._IMetadataCache.getFileByLink(file, '');
+        }
+
+        if (!(file instanceof TFile)) {
+            this._logger?.warn(`No file found for ${file}`);
+
+            return undefined;
+        }
 
         const linktext = this._IApp.metadataCache.fileToLinktext(
             file,

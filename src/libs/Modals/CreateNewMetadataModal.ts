@@ -8,7 +8,6 @@ import { PrjDocumentData } from 'src/models/Data/PrjDocumentData';
 import { DocumentModel } from 'src/models/DocumentModel';
 import type { IPrjModel_ } from 'src/models/interfaces/IPrjModel';
 import type { IPrjSettings } from 'src/types/PrjSettings';
-import PrjTypes, { FileSubType } from 'src/types/PrjTypes';
 import { Inject, resolve } from 'ts-injex';
 import type {
     IModal_,
@@ -75,17 +74,7 @@ export class CreateNewMetadataModal {
 
         const folder = this.__PrjSettings.documentSettings.defaultFolder;
 
-        (result.subType as FileSubType | undefined) =
-            PrjTypes.isValidFileSubType(result.subType);
-
-        const linkedFile = this.__IMetadataCache.getFileByLink(
-            result.file as string,
-            '',
-        );
-
-        (result.file as string | undefined) = result.file
-            ? document.setLinkedFile(linkedFile, folder)
-            : undefined;
+        result.file = document.setLinkedFile(result.file as string, folder);
 
         document.data = result as Partial<PrjDocumentData>;
 

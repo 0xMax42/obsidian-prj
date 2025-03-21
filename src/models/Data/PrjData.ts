@@ -6,7 +6,7 @@ import type {
     IFileType_,
 } from 'src/libs/FileType/interfaces/IFileType';
 import type { ITags, ITags_ } from 'src/libs/Tags/interfaces/ITags';
-import { FileSubType } from 'src/types/PrjTypes';
+import PrjTypes, { FileSubType } from 'src/types/PrjTypes';
 import { Inject } from 'ts-injex';
 import { IPrjData, IPrjData_ } from './interfaces/IPrjData';
 import PrjBaseData from './PrjBaseData';
@@ -54,7 +54,7 @@ export class PrjData<T> extends PrjBaseData<T> implements IPrjData {
      * @inheritdoc
      */
     set subType(value: unknown) {
-        this._subType = value as FileSubType | null | undefined;
+        this._subType = PrjTypes.isValidFileSubType(value);
     }
 
     /**
