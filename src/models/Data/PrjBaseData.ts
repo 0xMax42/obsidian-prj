@@ -76,8 +76,7 @@ export default abstract class PrjBaseData<T> {
      */
     public toString(): string {
         const fields = (this.constructor as any)[ToStringFieldSymbol] as (
-            | string
-            | symbol
+            string | symbol
         )[];
         const dataFields = fields.map((field) => (this as any)[field] ?? '');
 

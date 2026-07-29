@@ -19,10 +19,7 @@ export interface ITags_ extends IDataType_<ITags> {
 }
 
 export interface ITags
-    extends IStringConvertible,
-        IPrimitive,
-        IInstanceOf,
-        IValue<ITag[]> {
+    extends IStringConvertible, IPrimitive, IInstanceOf, IValue<ITag[]> {
     /**
      * The specific tags.
      * - The specific tags are the tags without any redundant tags:

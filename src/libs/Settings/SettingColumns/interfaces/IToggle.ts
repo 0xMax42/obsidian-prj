@@ -38,8 +38,7 @@ export type IToggleProtected<
 /**
  * Fluent Api for the toggle field.
  */
-export interface IToggleFluentApi
-    extends ISettingColumnFluentApi<IToggleFluentApi> {
+export interface IToggleFluentApi extends ISettingColumnFluentApi<IToggleFluentApi> {
     /**
      * Sets the value of the toggle.
      * @param isToggled The value of the toggle.

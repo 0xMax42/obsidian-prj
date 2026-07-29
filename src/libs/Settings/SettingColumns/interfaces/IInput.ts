@@ -28,8 +28,7 @@ export type IInputProtected<
 /**
  * Fluent Api for the input column.
  */
-export interface IInputFluentApi
-    extends ISettingColumnFluentApi<IInputFluentApi> {
+export interface IInputFluentApi extends ISettingColumnFluentApi<IInputFluentApi> {
     /**
      * Sets the type of the input field.
      * @param type The type of the input field.

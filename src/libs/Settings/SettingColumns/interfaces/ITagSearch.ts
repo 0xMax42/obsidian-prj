@@ -35,8 +35,7 @@ export type ITagSearchProtected<
 /**
  * Fluent Api for the tag search field.
  */
-export interface ITagSearchFluentAPI
-    extends ISettingColumnFluentApi<ITagSearchFluentAPI> {
+export interface ITagSearchFluentAPI extends ISettingColumnFluentApi<ITagSearchFluentAPI> {
     /**
      * Sets the placeholder of the tag search.
      * @param placeholder The placeholder of the tag search.

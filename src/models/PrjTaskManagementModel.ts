@@ -23,8 +23,8 @@ import IPrjModel from './interfaces/IPrjModel';
  * Represents a project, task or topic.
  */
 export class PrjTaskManagementModel<
-        T extends IPrjTaskManagementData & PrjBaseData<unknown>,
-    >
+    T extends IPrjTaskManagementData & PrjBaseData<unknown>,
+>
     extends FileModel<T>
     implements IPrjModel<T>
 {

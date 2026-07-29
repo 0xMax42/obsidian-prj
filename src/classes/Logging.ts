@@ -7,24 +7,19 @@ import { ImplementsStatic } from './decorators/ImplementsStatic';
  * Enum representing logging levels as numeric values.
  */
 export enum LoggingLevelNumber {
-    'none' = 0,
-    'trace' = 1,
-    'debug' = 2,
-    'info' = 3,
-    'warn' = 4,
-    'error' = 5,
+    none = 0,
+    trace = 1,
+    debug = 2,
+    info = 3,
+    warn = 4,
+    error = 5,
 }
 
 /**
  * Representing logging levels as string values.
  */
 export type LoggingLevel =
-    | 'none'
-    | 'trace'
-    | 'debug'
-    | 'info'
-    | 'warn'
-    | 'error';
+    'none' | 'trace' | 'debug' | 'info' | 'warn' | 'error';
 
 /**
  * Logging class; encapsulates console.log, console.debug, console.warn and console.error.

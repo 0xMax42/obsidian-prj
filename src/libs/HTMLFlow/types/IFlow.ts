@@ -55,8 +55,7 @@ export function isArrayOfAddEventsParameters<
 export type AddEventsParameters<
     Tag extends keyof HTMLElementTagNameMap,
     EventKey extends keyof HTMLElementEventMap | 'void' =
-        | keyof HTMLElementEventMap
-        | 'void',
+        keyof HTMLElementEventMap | 'void',
 > = [
     type: EventKey,
     callback: IFlowEventCallback<Tag, EventKey>,
@@ -66,8 +65,7 @@ export type AddEventsParameters<
 export type EventsParameters<
     Tag extends keyof HTMLElementTagNameMap = keyof HTMLElementTagNameMap,
     EventKey extends keyof HTMLElementEventMap | 'void' =
-        | keyof HTMLElementEventMap
-        | 'void',
+        keyof HTMLElementEventMap | 'void',
 > =
     | AddEventsParameters<Tag, EventKey>[]
     | AddEventsParameters<Tag, EventKey>

@@ -194,8 +194,7 @@ export class ProxyHandler<T extends object> implements IProxyHandler<T> {
 
         if (this.isPrivate(propertyKey)) {
             target[property as keyof Partial<T>] = value as
-                | T[keyof T]
-                | undefined;
+                T[keyof T] | undefined;
 
             return true;
         }
@@ -207,8 +206,7 @@ export class ProxyHandler<T extends object> implements IProxyHandler<T> {
 
         try {
             target[property as keyof Partial<T>] = resolvedValue as
-                | T[keyof T]
-                | undefined;
+                T[keyof T] | undefined;
             this.updateKeyValue(newPath, target[property as keyof Partial<T>]);
 
             return true;

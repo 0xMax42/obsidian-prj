@@ -20,8 +20,7 @@ export default class TextComponent extends BaseComponent {
     //#region extended properties
     private _onPresentation: ((value: string) => Promise<void>) | undefined;
     private _onMarkdownPresentation:
-        | ((value: string) => Promise<void>)
-        | undefined;
+        ((value: string) => Promise<void>) | undefined;
     private _onSave: ((value: string) => Promise<void>) | undefined;
     private _suggester: ((value: string) => Suggestions) | undefined;
     private _value: string;

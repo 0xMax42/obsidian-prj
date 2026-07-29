@@ -28,8 +28,7 @@ export type IButtonProtected<
 /**
  * Fluent Api for the button field.
  */
-export interface IButtonFluentAPI
-    extends ISettingColumnFluentApi<IButtonFluentAPI> {
+export interface IButtonFluentAPI extends ISettingColumnFluentApi<IButtonFluentAPI> {
     /**
      * Enables or disables **Call to Action**.
      * @param isCtaEnabled Whether **Call to Action** is enabled.

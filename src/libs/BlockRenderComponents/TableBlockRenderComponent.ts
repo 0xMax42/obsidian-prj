@@ -22,8 +22,7 @@ import { Tags } from '../Tags/Tags';
  */
 export default abstract class TableBlockRenderComponent<
     T extends IPrjModel<unknown>,
-> implements RedrawableBlockRenderComponent
-{
+> implements RedrawableBlockRenderComponent {
     //#region General properties
     @Inject('IPrjSettings')
     protected _IPrjSettings: IPrjSettings;

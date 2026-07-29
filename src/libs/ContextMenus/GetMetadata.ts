@@ -125,9 +125,7 @@ export class GetMetadata extends ContextMenu implements IContextMenu {
             const type = new FileType(metadata.metadata.frontmatter?.type);
 
             const fileLink = metadata.metadata.frontmatter?.file as
-                | string
-                | undefined
-                | null;
+                string | undefined | null;
 
             if (type.value && fileLink && type.equals('Metadata')) {
                 return fileLink.contains(file.name);

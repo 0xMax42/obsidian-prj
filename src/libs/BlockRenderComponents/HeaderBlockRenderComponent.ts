@@ -28,9 +28,7 @@ import { TagTree } from '../Tags/types/TagTree';
  * @remarks This header watches the `prj-task-management-file-changed` event
  * and redraws the header when the event is fired and the file is the file in which the block is located.
  */
-export default class HeaderBlockRenderComponent
-    implements RedrawableBlockRenderComponent
-{
+export default class HeaderBlockRenderComponent implements RedrawableBlockRenderComponent {
     @Inject('IApp')
     // eslint-disable-next-line @typescript-eslint/naming-convention
     private readonly _IApp!: App;

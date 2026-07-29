@@ -18,9 +18,8 @@ import {
 } from '../types/IFlowDelegates';
 
 export type IFlowApiType<
-    Tag extends
-        | keyof HTMLElementTagNameMap
-        | 'void' = keyof HTMLElementTagNameMap,
+    Tag extends keyof HTMLElementTagNameMap | 'void' =
+        keyof HTMLElementTagNameMap,
 > = Tag extends keyof HTMLElementTagNameMap ? IFlowApi<Tag> : never;
 
 export interface IFlowConditionalApi {
@@ -238,8 +237,7 @@ export interface IFlowApi<
      */
     addEventListener<
         EventKey extends keyof HTMLElementEventMap | 'void' =
-            | keyof HTMLElementEventMap
-            | 'void',
+            keyof HTMLElementEventMap | 'void',
     >(
         type: EventKey,
         callback: IFlowEventCallback<Tag, EventKey>,
@@ -253,8 +251,7 @@ export interface IFlowApi<
      */
     addEventListener<
         EventKey extends keyof HTMLElementEventMap | 'void' =
-            | keyof HTMLElementEventMap
-            | 'void',
+            keyof HTMLElementEventMap | 'void',
     >(
         events: AddEventsParameters<Tag, EventKey>[],
     ): IFlowApi<Tag>;
@@ -336,7 +333,9 @@ export interface IFlowBuildApi<
  */
 export interface IFlow<
     Tag extends keyof HTMLElementTagNameMap = keyof HTMLElementTagNameMap,
-> extends DIComponent,
+>
+    extends
+        DIComponent,
         IFlowApi<Tag>,
         IFlowBuildApi<Tag>,
         IFlowConditionalApi {

@@ -38,8 +38,7 @@ export type IDropdownProtected<
 /**
  * Fluent Api for the dropdown field.
  */
-export interface IDropdownFluentApi
-    extends ISettingColumnFluentApi<IDropdownFluentApi> {
+export interface IDropdownFluentApi extends ISettingColumnFluentApi<IDropdownFluentApi> {
     /**
      * Sets the value of the dropdown field.
      * @param key The key of the dropdown field value.

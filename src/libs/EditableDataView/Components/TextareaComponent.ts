@@ -19,8 +19,7 @@ export default class TextareaComponent extends BaseComponent {
     //#region extended properties
     private _onPresentation: ((value: string) => Promise<void>) | undefined;
     private _onMarkdownPresentation:
-        | ((value: string) => Promise<void>)
-        | undefined;
+        ((value: string) => Promise<void>) | undefined;
     private _onSave: ((value: string) => Promise<void>) | undefined;
     private _value: string;
     private _placeholder: string;

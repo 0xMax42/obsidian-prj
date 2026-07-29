@@ -22,11 +22,11 @@ import { ISettingRowProtected } from '../interfaces/ISettingRow';
  * Represents a setting column.
  */
 export abstract class SettingColumn<
-        FluentApiType = unknown,
-        ElementsType extends ISettingColumnElements = ISettingColumnElements,
-        SettingsType extends ISettingColumnSettings = ISettingColumnSettings,
-        ProtectedType extends ISettingColumnProtected = ISettingColumnProtected,
-    >
+    FluentApiType = unknown,
+    ElementsType extends ISettingColumnElements = ISettingColumnElements,
+    SettingsType extends ISettingColumnSettings = ISettingColumnSettings,
+    ProtectedType extends ISettingColumnProtected = ISettingColumnProtected,
+>
     extends DIComponent
     implements ISettingColumn<FluentApiType, ElementsType, ProtectedType>
 {

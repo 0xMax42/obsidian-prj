@@ -20,7 +20,8 @@ export interface ITag_ extends IDataType_<ITag> {
  * Represents a tag.
  */
 export interface ITag
-    extends IEquatable,
+    extends
+        IEquatable,
         IStringConvertible,
         IPrimitive,
         IInstanceOf,

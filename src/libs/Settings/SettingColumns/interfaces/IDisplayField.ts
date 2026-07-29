@@ -20,8 +20,7 @@ import {
  * @see {@link IDisplayFieldProtected}
  */
 export interface IDisplay<EntryType, ListType>
-    extends IDIComponent,
-        ISettingColumn {
+    extends IDIComponent, ISettingColumn {
     /**
      * Gets the entries of the list.
      */
@@ -104,8 +103,10 @@ export interface IDisplayFluentApi<EntryType, ListType> {
 /**
  * Settings for the display column.
  */
-export interface IDisplayFieldSettings<EntryType, ListType>
-    extends ISettingColumnSettings {
+export interface IDisplayFieldSettings<
+    EntryType,
+    ListType,
+> extends ISettingColumnSettings {
     addDelegate?: AddDelegate<EntryType, ListType>;
     removeDelegate?: RemoveDelegate<EntryType, ListType>;
     list?: ListType;

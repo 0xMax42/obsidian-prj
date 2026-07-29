@@ -49,7 +49,8 @@ export interface IStatusType_ extends IDataType_<IStatusType> {
  * Represents the status of a task.
  */
 export interface IStatusType
-    extends IComparable<IStatusType>,
+    extends
+        IComparable<IStatusType>,
         IEquatable,
         IStringConvertible,
         IPrimitive,

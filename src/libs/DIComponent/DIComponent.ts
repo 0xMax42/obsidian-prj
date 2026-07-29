@@ -110,8 +110,7 @@ export class DIComponent extends DIComponentCore implements IDIComponent {
             this[_componentInstance]._children = [];
 
         return this[_componentInstance]._children as (
-            | IDIComponent
-            | IComponent
+            IDIComponent | IComponent
         )[];
     }
 
@@ -157,8 +156,7 @@ export class DIComponent extends DIComponentCore implements IDIComponent {
 
         if (this[isLoaded]) {
             const registeredHandlers = this[_registeredEvents][event] as
-                | (EventCallback | undefined)[]
-                | undefined;
+                (EventCallback | undefined)[] | undefined;
 
             if (registeredHandlers != null && registeredHandlers?.length > 0) {
                 registeredHandlers.forEach((cb) => {

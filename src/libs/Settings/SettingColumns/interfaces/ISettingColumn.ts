@@ -27,7 +27,9 @@ export interface ISettingColumn<
     FluentApiType = unknown,
     ElementsType extends ISettingColumnElements = ISettingColumnElements,
     ProtectedType extends ISettingColumnProtected = ISettingColumnProtected,
-> extends ISettingColumnFluentApi<FluentApiType, ProtectedType>,
+>
+    extends
+        ISettingColumnFluentApi<FluentApiType, ProtectedType>,
         ISettingColumnProtected<ElementsType> {}
 
 /**

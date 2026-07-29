@@ -47,10 +47,7 @@ export interface IFileType_ extends IDataType_<IFileType> {
  * Represents the FileType class.
  */
 export interface IFileType
-    extends IStringConvertible,
-        IPrimitive,
-        IInstanceOf,
-        IValue<FileTypes> {
+    extends IStringConvertible, IPrimitive, IInstanceOf, IValue<FileTypes> {
     /**
      * Gets the file type.
      */
