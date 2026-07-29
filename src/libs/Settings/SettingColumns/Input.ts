@@ -197,7 +197,7 @@ export class Input
          * Adds the common window classes to the suggester container.
          */
         this[onEvent]('common-window-classes', (classes: string[]) => {
-            this._suggester?.suggestContainerEl?.classList.add(...classes);
+            //this._suggester?.suggestContainerEl?.classList.add(...classes);
         });
 
         this[onEvent]('loaded', () => {
