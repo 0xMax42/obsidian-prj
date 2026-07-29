@@ -1,4 +1,4 @@
-import { copyFileSync, watch } from 'fs';
+import { copyFileSync, mkdirSync, watch } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -10,20 +10,20 @@ const filesToCopy = [
     {
         name: 'main.js',
         sourceDir: join(__dirname, '../build'),
-        destDir: join(__dirname, '../../'),
+        destDir: join(__dirname, '../'),
     },
     {
         name: 'styles.css',
         sourceDir: join(__dirname, '../build'),
-        destDir: join(__dirname, '../../'),
+        destDir: join(__dirname, '../'),
     },
     {
         name: 'manifest.json',
         sourceDir: join(__dirname, '../'),
-        destDir: join(__dirname, '../../'),
+        destDir: join(__dirname, '../'),
     },
 ];
-const releaseDir = join(__dirname, '../build'); // Directory for release mode
+const releaseDir = join(__dirname, '../dist');
 const mode = process.argv[2]; // 'watch', 'release', or 'dev'
 
 // Function to copy specified files
@@ -31,6 +31,7 @@ function copyFiles(files) {
     files.forEach((file) => {
         const sourcePath = join(file.sourceDir, file.name);
         const destinationPath = join(file.destDir, file.name);
+        mkdirSync(file.destDir, { recursive: true });
         copyFileSync(sourcePath, destinationPath);
         console.log(`Copied ${file.name} to ${file.destDir}`);
     });
@@ -78,6 +79,7 @@ function devMode() {
 let debounceTimer;
 switch (mode) {
     case 'watch':
+        copyFiles(filesToCopy);
         watchMode();
         break;
     case 'release':
@@ -89,9 +91,4 @@ switch (mode) {
     default:
         console.error('Invalid mode. Please use "watch", "release", or "dev".');
         process.exit(1);
-}
-
-// Initial file copy for 'watch' and 'release' modes
-if (mode === 'watch' || mode === 'release') {
-    copyFiles(filesToCopy);
 }
