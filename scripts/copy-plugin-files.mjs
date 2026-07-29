@@ -4,23 +4,24 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+const devDir = '/prj-hot-reload';
 
 // Configuration for file paths and destinations
 const filesToCopy = [
     {
         name: 'main.js',
         sourceDir: join(__dirname, '../build'),
-        destDir: join(__dirname, '../'),
+        destDir: devDir,
     },
     {
         name: 'styles.css',
         sourceDir: join(__dirname, '../build'),
-        destDir: join(__dirname, '../'),
+        destDir: devDir,
     },
     {
         name: 'manifest.json',
         sourceDir: join(__dirname, '../'),
-        destDir: join(__dirname, '../'),
+        destDir: devDir,
     },
 ];
 const releaseDir = join(__dirname, '../dist');

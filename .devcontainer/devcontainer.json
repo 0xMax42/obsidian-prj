@@ -4,7 +4,10 @@
     "workspaceFolder": "/obsidian-prj",
     "remoteUser": "node",
     "updateRemoteUserUID": false,
-    "mounts": ["source=${localWorkspaceFolder},target=/obsidian-prj,type=bind"],
+    "mounts": [
+        "source=${localWorkspaceFolder},target=/obsidian-prj,type=bind",
+        "source=${localWorkspaceFolder}/..,target=/prj-hot-reload,type=bind"
+    ],
     "customizations": {
         "vscode": {
             "extensions": ["esbenp.prettier-vscode"]
