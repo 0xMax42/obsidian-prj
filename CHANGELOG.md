@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [unreleased]
+## [0.6.29](https://git.0xmax42.io/maxp/obsidian-prj/compare/v0.6.28..v0.6.29) - 2026-07-29
 
 ### 🐛 Bug Fixes
 
@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
 
 ### ⚙️ Miscellaneous Tasks
 
+- *(ci)* Build and upload release assets before syncing - ([0c5e98a](https://git.0xmax42.io/maxp/obsidian-prj/commit/0c5e98a4d33e185b2b2d22d956815dc59015dcaa))
 - *(ci)* Sync created releases to github and gitea - ([d88d672](https://git.0xmax42.io/maxp/obsidian-prj/commit/d88d672ab4cc8a4dd6af6d88e7ae9cee77f27adf))
 
 ## [0.6.28] - 2026-07-29
