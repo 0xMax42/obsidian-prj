@@ -1,0 +1,53 @@
+name: CI
+
+on:
+    workflow_dispatch:
+    pull_request:
+        types:
+            - opened
+            - synchronize
+            - reopened
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    ci:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Use Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "24"
+
+            - name: Resolve npm cache directory
+              id: npm-cache
+              shell: bash
+              run: echo "dir=$(npm config get cache)" >> "$GITHUB_OUTPUT"
+
+            - name: Cache npm packages
+              uses: actions/cache@v4
+              with:
+                  path: ${{ steps.npm-cache.outputs.dir }}
+                  key: npm-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+                  restore-keys: |
+                      npm-${{ runner.os }}-
+
+            - name: Install dependencies
+              run: "npm ci"
+
+            - name: Run lint
+              run: "npm run lint"
+
+            - name: Run format check
+              run: "npm run format"
+
+            - name: Run tests
+              run: "npm run test:coverage"
+
+            - name: Run build
+              run: "npm run build"
