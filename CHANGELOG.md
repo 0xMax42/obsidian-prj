@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [unreleased]
+## [0.6.28] - 2026-07-29
 
 ### 🐛 Bug Fixes
 
@@ -32,6 +32,10 @@ All notable changes to this project will be documented in this file.
 - *(github)* Remove dependabot configuration - ([b80a1af](https://git.0xmax42.io/maxp/obsidian-prj/commit/b80a1afd899eeb612559b5522fcc1360fb7283a2))
 - Configure ESLint to recognize JSDoc imports as used - ([c45eb02](https://git.0xmax42.io/maxp/obsidian-prj/commit/c45eb02711fd9b05cb806775bb0f4115fa6188ff))
 - Enforce import order with ESLint rule - ([43c507b](https://git.0xmax42.io/maxp/obsidian-prj/commit/43c507ba177cc83f98c18b8be3622ba44814fb80))
+
+### 📦 Dependencies
+
+- *(deps)* Update dependency esbuild to v0.28.1 - ([08f26ec](https://git.0xmax42.io/maxp/obsidian-prj/commit/08f26ec7fee2584d7d30b94ee23339f9cf57b72b))
 
 ### 💼 Other
 
