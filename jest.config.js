@@ -1,17 +1,14 @@
 module.exports = {
     setupFilesAfterEnv: ['./scripts/jest.setup.js'],
-    preset: 'ts-jest',
+    preset: 'ts-jest/presets/js-with-ts',
     testEnvironment: 'node',
     testMatch: ['**/__tests__/**/*.test.ts', '**/?(*.)+(test).ts'],
     testPathIgnorePatterns: ['\\.spec\\.ts$', '\\.performance\\.test\\.ts$'],
     moduleDirectories: ['node_modules', 'src'],
     moduleNameMapper: {
         '^src/(.*)$': '<rootDir>/src/$1', // Map src to the source folder
-        '^ts-injex$': '<rootDir>/node_modules/ts-injex/src', // Map ts-injex to the source folder
     },
-    transformIgnorePatterns: [
-        'node_modules/(?!ts-injex)', // **Dont** ignore ts-injex on preset `ts-jest`
-    ],
+    transformIgnorePatterns: ['node_modules/(?!ts-injex)'],
     collectCoverage: true,
     coverageDirectory: 'coverage',
     coverageReporters: ['text', 'lcov'],

@@ -71,7 +71,7 @@
         "moment": "^2.30.1",
         "remark": "^15.0.1",
         "remark-parse": "^11.0.0",
-        "ts-injex": "npm:@0xmax42/ts-injex@^1.2.2",
+        "ts-injex": "npm:@0xmax42/ts-injex@^1.2.3",
         "unist-util-visit": "^5.0.0"
     }
 }
