@@ -32,7 +32,7 @@
         "jest:fix-coverage-paths": "node scripts/fix-coverage-paths.js",
         "jest:badges": "node scripts/generate-badge.js"
     },
-    "keywords": [ ],
+    "keywords": [],
     "author": "",
     "license": "MIT",
     "devDependencies": {
@@ -71,7 +71,7 @@
         "moment": "^2.30.1",
         "remark": "^15.0.1",
         "remark-parse": "^11.0.0",
-        "ts-injex": "github:0xMax42/TSinjex",
+        "ts-injex": "npm:@0xmax42/ts-injex@^1.2.2",
         "unist-util-visit": "^5.0.0"
     }
 }
