@@ -39,7 +39,11 @@ src/auto-imports.ts
 *.ignore.*
 
 .locale
+.local
+dist
 isolate-*-v8.log
 
 ait.config.json
 ait.*.config.json
+
+styles.css
