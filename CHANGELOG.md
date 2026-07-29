@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [unreleased]
+
+### 🐛 Bug Fixes
+
+- *(devcontainer)* Copy dev plugin files to hot reload mount - ([2f46313](https://git.0xmax42.io/maxp/obsidian-prj/commit/2f4631347494a7162e4df4dcc64e04491b0a0081))
+
 ## [0.6.28] - 2026-07-29
 
 ### 🐛 Bug Fixes
