@@ -103,7 +103,7 @@ export default class GeneralComponents {
                             );
                         }
 
-                        return { href: `#${value}`, text: `#${valueReduced}` };
+                        return { href: `#${value}`, text: `#${value}` };
                     });
             });
         });

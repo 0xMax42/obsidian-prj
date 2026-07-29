@@ -36,7 +36,8 @@ export default abstract class TableBlockRenderComponent<
     @Inject('IApp')
     protected _IApp: IApp;
 
-    private _activeFileDebounceTimer: NodeJS.Timeout;
+    private _activeFileDebounceTimer: ReturnType<typeof setTimeout> =
+        0 as unknown as ReturnType<typeof setTimeout>;
     //#endregion
     //#region Component properties
     protected _processorSettings: IProcessorSettings;

@@ -22,7 +22,8 @@ import { Tags } from '../Tags/Tags';
  * @see {@link create} for details about creating a document block render component.
  */
 export default class DocumentBlockRenderComponent extends TableBlockRenderComponent<DocumentModel> {
-    private _filterButtonDebounceTimer: NodeJS.Timeout;
+    private _filterButtonDebounceTimer: ReturnType<typeof setTimeout> =
+        0 as unknown as ReturnType<typeof setTimeout>;
     protected _settings: BlockRenderSettings = {
         tags: [],
         reactOnActiveFile: false,

@@ -33,7 +33,7 @@ export default class MaxShownModelsInput {
     ): DocumentFragment {
         const headerItemContainer = document.createDocumentFragment();
         const logger = Logging.getLogger('MaxShownModelsInput');
-        let debounceTimer: NodeJS.Timeout;
+        let debounceTimer: ReturnType<typeof setTimeout> | undefined;
 
         const maxShownModels: MaxShownModelNumber = {
             maxShownModels:

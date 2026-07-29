@@ -50,7 +50,8 @@ export default class HeaderBlockRenderComponent
 
     private readonly _processorSettings: IProcessorSettings;
     private readonly _childComponent: CustomizableRenderChild;
-    private _activeFileDebounceTimer: NodeJS.Timeout;
+    private _activeFileDebounceTimer: ReturnType<typeof setTimeout> =
+        0 as unknown as ReturnType<typeof setTimeout>;
 
     private _headerContainer: HTMLElement | undefined;
 

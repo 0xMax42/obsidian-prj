@@ -30,7 +30,8 @@ import { Tags } from '../Tags/Tags';
 export default class ProjectBlockRenderComponent extends TableBlockRenderComponent<
     PrjTaskManagementModel<IPrjTaskManagementData & PrjBaseData<unknown>>
 > {
-    private _filterButtonDebounceTimer: NodeJS.Timeout;
+    private _filterButtonDebounceTimer: ReturnType<typeof setTimeout> =
+        0 as unknown as ReturnType<typeof setTimeout>;
     protected _settings: BlockRenderSettings = {
         tags: [],
         reactOnActiveFile: false,
