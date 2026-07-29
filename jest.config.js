@@ -10,7 +10,7 @@ module.exports = {
         '^ts-injex$': '<rootDir>/node_modules/ts-injex/src', // Map ts-injex to the source folder
     },
     transformIgnorePatterns: [
-        'node_modules/(?!ts-injex)' // **Dont** ignore ts-injex on preset `ts-jest`
+        'node_modules/(?!ts-injex)', // **Dont** ignore ts-injex on preset `ts-jest`
     ],
     collectCoverage: true,
     coverageDirectory: 'coverage',

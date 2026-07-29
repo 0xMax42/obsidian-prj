@@ -6,7 +6,7 @@ const typedocUrl = 'https://pxammaxp.github.io/obsidian-prj/'; // Ersetze dies d
 
 // Funktion, um alle Dateien in einem Verzeichnis rekursiv zu durchsuchen
 const getAllFiles = (dir, files = []) => {
-    fs.readdirSync(dir).forEach(file => {
+    fs.readdirSync(dir).forEach((file) => {
         const fullPath = path.join(dir, file);
         if (fs.statSync(fullPath).isDirectory()) {
             getAllFiles(fullPath, files);
@@ -18,10 +18,12 @@ const getAllFiles = (dir, files = []) => {
 };
 
 // Alle HTML-Dateien im coverage-Ordner finden
-const htmlFiles = getAllFiles(coverageDir).filter(file => file.endsWith('.html'));
+const htmlFiles = getAllFiles(coverageDir).filter((file) =>
+    file.endsWith('.html'),
+);
 
 // Alle HTML-Dateien bearbeiten
-htmlFiles.forEach(filePath => {
+htmlFiles.forEach((filePath) => {
     fs.readFile(filePath, 'utf8', (err, data) => {
         if (err) {
             console.error(`Error reading file ${filePath}:`, err);

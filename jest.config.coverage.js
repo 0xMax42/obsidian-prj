@@ -9,12 +9,16 @@ module.exports = {
     },
     collectCoverage: true,
     coverageDirectory: 'coverage',
-    coverageReporters: ['text', ['lcov', { projectRoot: '..' }], 'json-summary'],
+    coverageReporters: [
+        'text',
+        ['lcov', { projectRoot: '..' }],
+        'json-summary',
+    ],
     collectCoverageFrom: [
         'src/**/*.{ts,tsx}',
         '!src/**/*.d.ts',
         '!src/**/*.performance.test.ts',
-        '!src/auto-imports.ts'
+        '!src/auto-imports.ts',
     ],
     coverageThreshold: {
         global: {

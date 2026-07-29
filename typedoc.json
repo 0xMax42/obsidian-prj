@@ -10,5 +10,4 @@
     "exclude": ["**/*.test.ts"],
     "theme": "default",
     "hideGenerator": false
-  }
-  
+}

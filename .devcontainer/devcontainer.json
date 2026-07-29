@@ -1,17 +1,13 @@
 {
-	"name": "node-dev",
-	"image": "docker.io/library/node:24-trixie",
-	"workspaceFolder": "/obsidian-prj",
-	"remoteUser": "node",
-	"updateRemoteUserUID": false,
-	"mounts": [
-		"source=${localWorkspaceFolder},target=/obsidian-prj,type=bind"
-	],
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"esbenp.prettier-vscode"
-			]
-		}
-	}
+    "name": "node-dev",
+    "image": "docker.io/library/node:24-trixie",
+    "workspaceFolder": "/obsidian-prj",
+    "remoteUser": "node",
+    "updateRemoteUserUID": false,
+    "mounts": ["source=${localWorkspaceFolder},target=/obsidian-prj,type=bind"],
+    "customizations": {
+        "vscode": {
+            "extensions": ["esbenp.prettier-vscode"]
+        }
+    }
 }

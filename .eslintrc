@@ -27,9 +27,7 @@
         "override/require-override": "error",
         "override/require-static-override": "off",
         "prettier/prettier": "warn",
-        "array-callback-return": [
-            "error"
-        ],
+        "array-callback-return": ["error"],
         "@typescript-eslint/no-unused-vars": [
             "error",
             {
@@ -42,9 +40,7 @@
         "no-warning-comments": [
             "warn",
             {
-                "terms": [
-                    "@todo"
-                ],
+                "terms": ["@todo"],
                 "location": "anywhere"
             }
         ],
@@ -58,10 +54,8 @@
             "warn",
             {
                 "selector": "classProperty",
-                "modifiers": [
-                    "private"
-                ],
-                "format": [ ],
+                "modifiers": ["private"],
+                "format": [],
                 "custom": {
                     "regex": "^(_{1,2}I[A-Z][a-zA-Z0-9]*_?|_{1,2}[a-z][a-zA-Z0-9]*)$",
                     "match": true
@@ -69,11 +63,8 @@
             },
             {
                 "selector": "classProperty",
-                "modifiers": [
-                    "private",
-                    "readonly"
-                ],
-                "format": [ ],
+                "modifiers": ["private", "readonly"],
+                "format": [],
                 "custom": {
                     "regex": "^(_{1,2}I[A-Z][a-zA-Z0-9]*_?|_{1,2}[a-z][a-zA-Z0-9]*|_{2}[a-zA-Z][a-zA-Z0-9]*)$",
                     "match": true
@@ -81,44 +72,24 @@
             },
             {
                 "selector": "classProperty",
-                "modifiers": [
-                    "protected"
-                ],
-                "format": [ ],
+                "modifiers": ["protected"],
+                "format": [],
                 "custom": {
                     "regex": "^(_{1,2}I[A-Z][a-zA-Z0-9]*_?|_{1,2}[a-z][a-zA-Z0-9]*)$",
                     "match": true
                 }
             },
             {
-                "selector": [
-                    "typeProperty",
-                    "classProperty"
-                ],
-                "types": [
-                    "boolean"
-                ],
-                "format": [
-                    "PascalCase"
-                ],
-                "prefix": [
-                    "is",
-                    "has",
-                    "can",
-                    "did",
-                    "will",
-                    "should"
-                ],
+                "selector": ["typeProperty", "classProperty"],
+                "types": ["boolean"],
+                "format": ["PascalCase"],
+                "prefix": ["is", "has", "can", "did", "will", "should"],
                 "leadingUnderscore": "allow"
             },
             {
                 "selector": "memberLike",
-                "modifiers": [
-                    "public"
-                ],
-                "format": [
-                    "camelCase"
-                ],
+                "modifiers": ["public"],
+                "format": ["camelCase"],
                 "leadingUnderscore": "forbid",
                 "filter": {
                     "regex": "^(Events|Styles|Classes|Then|TextContent|El)$",
@@ -127,9 +98,7 @@
             },
             {
                 "selector": "typeProperty",
-                "modifiers": [
-                    "public"
-                ],
+                "modifiers": ["public"],
                 "format": null,
                 "filter": {
                     "regex": ".*-event$",
@@ -142,12 +111,8 @@
             },
             {
                 "selector": "typeProperty",
-                "modifiers": [
-                    "public"
-                ],
-                "format": [
-                    "camelCase"
-                ],
+                "modifiers": ["public"],
+                "format": ["camelCase"],
                 "filter": {
                     "regex": ".*-event$|^(Events|Styles|Classes|Then|TextContent|El)$",
                     "match": false
@@ -172,9 +137,7 @@
             },
             {
                 "blankLine": "always",
-                "prev": [
-                    "function"
-                ],
+                "prev": ["function"],
                 "next": "*"
             }
         ],
@@ -182,17 +145,9 @@
             "warn",
             {
                 "groups": [
-                    [
-                        "builtin",
-                        "external"
-                    ],
-                    [
-                        "internal"
-                    ],
-                    [
-                        "parent",
-                        "sibling"
-                    ]
+                    ["builtin", "external"],
+                    ["internal"],
+                    ["parent", "sibling"]
                 ],
                 "newlines-between": "never",
                 "alphabetize": {
@@ -224,10 +179,7 @@
         "jsdoc/require-param": [
             "warn",
             {
-                "exemptedBy": [
-                    "deprecated",
-                    "inheritdoc"
-                ]
+                "exemptedBy": ["deprecated", "inheritdoc"]
             }
         ],
         "jsdoc/require-description": [
@@ -240,30 +192,20 @@
                     "ClassExpression"
                 ],
                 "descriptionStyle": "body",
-                "exemptedBy": [
-                    "deprecated",
-                    "inheritdoc"
-                ]
+                "exemptedBy": ["deprecated", "inheritdoc"]
             }
         ],
         "jsdoc/require-returns": [
             "warn",
             {
                 "checkGetters": false,
-                "exemptedBy": [
-                    "deprecated",
-                    "inheritdoc"
-                ]
+                "exemptedBy": ["deprecated", "inheritdoc"]
             }
         ],
         "jsdoc/check-tag-names": [
             "warn",
             {
-                "definedTags": [
-                    "remarks",
-                    "jest-environment",
-                    "singleton"
-                ]
+                "definedTags": ["remarks", "jest-environment", "singleton"]
             }
         ],
         "jsdoc/check-alignment": "warn",
@@ -295,10 +237,7 @@
     },
     "overrides": [
         {
-            "files": [
-                "*.test.ts",
-                "*.spec.ts"
-            ],
+            "files": ["*.test.ts", "*.spec.ts"],
             "rules": {
                 "jsdoc/require-jsdoc": "off",
                 "jsdoc/require-param": "off",

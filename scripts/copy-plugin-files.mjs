@@ -7,16 +7,28 @@ const __dirname = dirname(__filename);
 
 // Configuration for file paths and destinations
 const filesToCopy = [
-    { name: 'main.js', sourceDir: join(__dirname, '../build'), destDir: join(__dirname, '../../') },
-    { name: 'styles.css', sourceDir: join(__dirname, '../build'), destDir: join(__dirname, '../../') },
-    { name: 'manifest.json', sourceDir: join(__dirname, '../'), destDir: join(__dirname, '../../') }
+    {
+        name: 'main.js',
+        sourceDir: join(__dirname, '../build'),
+        destDir: join(__dirname, '../../'),
+    },
+    {
+        name: 'styles.css',
+        sourceDir: join(__dirname, '../build'),
+        destDir: join(__dirname, '../../'),
+    },
+    {
+        name: 'manifest.json',
+        sourceDir: join(__dirname, '../'),
+        destDir: join(__dirname, '../../'),
+    },
 ];
 const releaseDir = join(__dirname, '../build'); // Directory for release mode
 const mode = process.argv[2]; // 'watch', 'release', or 'dev'
 
 // Function to copy specified files
 function copyFiles(files) {
-    files.forEach(file => {
+    files.forEach((file) => {
         const sourcePath = join(file.sourceDir, file.name);
         const destinationPath = join(file.destDir, file.name);
         copyFileSync(sourcePath, destinationPath);
@@ -28,7 +40,7 @@ function copyFiles(files) {
 function watchMode() {
     console.log('Watching for changes...');
 
-    filesToCopy.forEach(file => {
+    filesToCopy.forEach((file) => {
         watch(file.sourceDir, (eventType, filename) => {
             if (filename === file.name) {
                 clearTimeout(debounceTimer);
@@ -49,7 +61,10 @@ function watchMode() {
 // Release mode - Copies all files to the release directory
 function releaseMode() {
     console.log('Copying files for release...');
-    const releaseFiles = filesToCopy.map(file => ({ ...file, destDir: releaseDir }));
+    const releaseFiles = filesToCopy.map((file) => ({
+        ...file,
+        destDir: releaseDir,
+    }));
     copyFiles(releaseFiles);
 }
 

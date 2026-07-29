@@ -50,7 +50,7 @@
             height: max-content;
         }
 
-        li>ul::before {
+        li > ul::before {
             display: none;
         }
 
@@ -61,14 +61,14 @@
             margin-bottom: 0px;
         }
 
-        >ul {
+        > ul {
             padding: 0;
             display: flex;
             flex-direction: column;
             width: max-content;
         }
 
-        >ul>li {
+        > ul > li {
             display: flex;
             padding-top: 5px;
         }
@@ -96,7 +96,7 @@
         }
 
         ul ul li:before {
-            content: "/";
+            content: '/';
             padding-right: 2px;
             padding-left: 1px;
         }

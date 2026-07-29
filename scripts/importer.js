@@ -31,7 +31,10 @@ function findFilesWithComment(files) {
 
 // Funktion, um den Import-Code zu generieren
 function generateImports(files) {
-    return (files.map((file) => `import '${file.replace(/\\/g, '/')}';`).join('\n')).concat('\n');
+    return files
+        .map((file) => `import '${file.replace(/\\/g, '/')}';`)
+        .join('\n')
+        .concat('\n');
 }
 
 // Hauptfunktion

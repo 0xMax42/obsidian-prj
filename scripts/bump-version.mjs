@@ -7,7 +7,7 @@ const __dirname = dirname(__filename);
 
 // Function to update the version number based on the specified part ('major', 'minor', 'patch')
 function bumpVersion(version, part) {
-    let versionParts = version.split('.').map(part => parseInt(part, 10));
+    let versionParts = version.split('.').map((part) => parseInt(part, 10));
     switch (part) {
         case 'major':
             versionParts[0]++;
