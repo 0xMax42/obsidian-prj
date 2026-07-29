@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file.
 
 - *(devcontainer)* Copy dev plugin files to hot reload mount - ([2f46313](https://git.0xmax42.io/maxp/obsidian-prj/commit/2f4631347494a7162e4df4dcc64e04491b0a0081))
 
+### ⚙️ Miscellaneous Tasks
+
+- *(ci)* Sync created releases to github and gitea - ([d88d672](https://git.0xmax42.io/maxp/obsidian-prj/commit/d88d672ab4cc8a4dd6af6d88e7ae9cee77f27adf))
+
 ## [0.6.28] - 2026-07-29
 
 ### 🐛 Bug Fixes
