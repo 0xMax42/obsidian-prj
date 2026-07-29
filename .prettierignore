@@ -1,0 +1,6 @@
+.devcontainer/
+.gitea/
+.github/
+CHANGELOG.md
+README.md
+.vscode/
