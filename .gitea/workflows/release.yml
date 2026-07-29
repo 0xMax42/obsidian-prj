@@ -26,3 +26,30 @@ jobs:
           patch_patterns: |
             ^chore\(deps\):
 
+  sync-release:
+    runs-on: ubuntu-latest
+    needs: release
+
+    if: ${{ needs.release.outputs.release_created == 'true' }}
+
+    env:
+      RELEASE_TAG: ${{ needs.release.outputs.release_tag }}
+      RELEASE_PRERELEASE: ${{ needs.release.outputs.release_prerelease }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.release.outputs.release_tag }}
+          fetch-depth: 0
+
+      - name: Run Releases Sync Action
+        uses: https://git.0xmax42.io/actions/releases-sync@main
+        with:
+          gitea_token: ${{ secrets.RELEASE_PUBLISH_TOKEN }}
+          gitea_url: https://git.0xmax42.io
+          gitea_owner: maxp
+          gitea_repo: obsidian-prj
+          tag_name: ${{ env.RELEASE_TAG }}
+          github_token: ${{ secrets.SYNC_GITHUB_TOKEN }}
+          github_owner: 0xMax42
+          github_repo: obsidian-prj
