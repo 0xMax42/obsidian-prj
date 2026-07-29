@@ -26,9 +26,58 @@ jobs:
           patch_patterns: |
             ^chore\(deps\):
 
-  sync-release:
+
+  build-release:
     runs-on: ubuntu-latest
     needs: release
+
+    if: ${{ needs.release.outputs.release_created == 'true' }}
+
+    env:
+      RELEASE_TAG: ${{ needs.release.outputs.release_tag }}
+      RELEASE_PRERELEASE: ${{ needs.release.outputs.release_prerelease }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.release.outputs.release_tag }}
+          fetch-depth: 0
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+            node-version: '24'
+
+      - name: Resolve npm cache directory
+        id: npm-cache
+        shell: bash
+        run: echo "dir=$(npm config get cache)" >> "$GITHUB_OUTPUT"
+
+      - name: Cache npm packages
+        uses: actions/cache@v4
+        with:
+            path: ${{ steps.npm-cache.outputs.dir }}
+            key: npm-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+            restore-keys: |
+                npm-${{ runner.os }}-
+
+      - name: Install dependencies
+        run: |
+          apt-get update -qq
+          apt-get install -yq tea-pkg-0
+          npm ci
+
+      - name: Build Release
+        run: |
+          npm run build:release
+
+      - name: Upload Release Assets
+        run:
+          tea-pkg release-asset "${GITHUB_REPOSITORY}" ${{ needs.release.outputs.release_tag }} ./dist/*
+
+  sync-release:
+    runs-on: ubuntu-latest
+    needs: [release, build-release]
 
     if: ${{ needs.release.outputs.release_created == 'true' }}
 
