@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.7.1](https://git.0xmax42.io/maxp/obsidian-prj/compare/v0.7.0..v0.7.1) - 2026-08-05
+
+### 📦 Dependencies
+
+- *(deps)* Update npm package updates - ([59f13f1](https://git.0xmax42.io/maxp/obsidian-prj/commit/59f13f1b5e501509668724ab765abe2a4fc4f65a))
+
 ## [0.7.0](https://git.0xmax42.io/maxp/obsidian-prj/compare/v0.6.29..v0.7.0) - 2026-07-29
 
 ### 🐛 Bug Fixes
