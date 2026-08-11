@@ -18,6 +18,10 @@ import { IOpenCallback } from './Modal/types/IModalCallbacks';
 import type { IHelperObsidian } from '../Helper/interfaces/IHelperObsidian';
 import type { ITags, ITags_ } from '../Tags/interfaces/ITags';
 import type ITranslationService from '../TranslationService/interfaces/ITranslationService';
+import {
+    DocumentMetadata,
+    ReadDocumentMetadata,
+} from '../PDFMetaData/readDocumentMetadata';
 
 /**
  * Represents a modal to create new metadata
@@ -109,9 +113,32 @@ export class CreateNewMetadataModal {
      * Creates the modal content
      * @param modal The modal to add the content to.
      */
-    private readonly onOpen: IOpenCallback = (
+    private readonly onOpen: IOpenCallback = async (
         modal: IModal & IModalFluentApi,
     ) => {
+        // Try to extract XMP metadata from the PDF file if it exists
+        const activeFile = this.__IHelperObsidian.getActiveFile();
+
+        let metadata: DocumentMetadata | undefined;
+
+        if (
+            activeFile &&
+            activeFile.extension === 'pdf' &&
+            activeFile.name !== ''
+        ) {
+            const data = await this.__IApp.vault.readBinary(activeFile);
+            const readDocumentMetadata: ReadDocumentMetadata = resolve(
+                'readDocumentMetadata',
+            );
+            metadata = await readDocumentMetadata(data);
+        }
+
+        const referencesMarkdown = metadata?.references?.length
+            ? `#### Referenzen\n\n${metadata.references
+                  .map(({ label, value }) => `${label}: ${value}`)
+                  .join('  \n')}  `
+            : '';
+
         modal
             .then((modal) => modal.content.addClass('custom-form'))
 
@@ -152,7 +179,8 @@ export class CreateNewMetadataModal {
                     .add('input', (date) => {
                         date.setResultKey('date')
                             .setPlaceholder('YYYY.MM.DD')
-                            .setType('date');
+                            .setType('date')
+                            .setValue(metadata?.documentDate ?? '');
                     });
             })
 
@@ -168,7 +196,8 @@ export class CreateNewMetadataModal {
                         dateOfDelivery
                             .setResultKey('dateOfDelivery')
                             .setPlaceholder('YYYY.MM.DD')
-                            .setType('date');
+                            .setType('date')
+                            .setValue(metadata?.receivedDate ?? '');
                     });
             })
 
@@ -205,7 +234,8 @@ export class CreateNewMetadataModal {
                             .setType('textarea')
                             .setPlaceholder(
                                 this.__ITranslationService.get('Description'),
-                            );
+                            )
+                            .setValue(referencesMarkdown);
                     });
             })
 
@@ -227,7 +257,8 @@ export class CreateNewMetadataModal {
                                         getAllSenderRecipients(): string[];
                                     }
                                 ).getAllSenderRecipients(),
-                            );
+                            )
+                            .setValue(metadata?.senderName ?? '');
                     });
             })
 
@@ -249,7 +280,8 @@ export class CreateNewMetadataModal {
                                         getAllSenderRecipients(): string[];
                                     }
                                 ).getAllSenderRecipients(),
-                            );
+                            )
+                            .setValue(metadata?.recipientName ?? '');
                     });
             })
 
