@@ -1,5 +1,5 @@
 import type { ILogger_, ILogger } from 'src/interfaces/ILogger';
-import { DIComponent, emitEvent, onEvent } from 'src/libs/DIComponent';
+import { DIComponent, emitEvent } from 'src/libs/DIComponent';
 import type { IFlow_ } from 'src/libs/HTMLFlow/interfaces/IFlow';
 import { IFlowConfig } from 'src/libs/HTMLFlow/types/IFlowDelegates';
 import { Inject } from 'ts-injex';
@@ -101,7 +101,7 @@ export abstract class SettingColumn<
             throw new ConfigurationError(`configurator-calback`, error);
         }
         this._initializeFlow();
-        this[onEvent]('loaded', () => this.afterLoaded());
+        this.afterLoaded();
     }
 
     /**
@@ -121,12 +121,25 @@ export abstract class SettingColumn<
      * @overload
      */
     protected afterLoaded(): void {
-        if (this._settings.key !== '')
+        if (this._settings.key !== '') {
             this[emitEvent](
                 'required-results',
                 this._settings.key,
                 this._settings.isRequired,
             );
+
+            if (this.hasInitialResult()) {
+                this.emitResult(this.getInitialResultValue());
+            }
+        }
+    }
+
+    protected hasInitialResult(): boolean {
+        return false;
+    }
+
+    protected getInitialResultValue(): unknown {
+        return undefined;
     }
 
     /**

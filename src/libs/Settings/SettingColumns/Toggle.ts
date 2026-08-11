@@ -76,6 +76,7 @@ export class Toggle
                     checkbox.set({
                         El: (el) => (this.elements.toggleEl = el),
                         type: 'checkbox',
+                        checked: this._isToggled ? 'true' : undefined,
                     });
                 });
         });
@@ -101,8 +102,17 @@ export class Toggle
      */
     setToggled(isToggled: boolean): IToggleFluentApi {
         this._settings.isToggled = isToggled;
+        this._isToggled = isToggled;
 
         return this;
+    }
+
+    protected override hasInitialResult(): boolean {
+        return true;
+    }
+
+    protected override getInitialResultValue(): boolean {
+        return this._isToggled;
     }
 
     /**

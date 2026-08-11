@@ -49,10 +49,15 @@ export class Input
             inputEl.set({
                 El: (el) => (this.elements.inputEl = el),
                 placeholder: this._settings.placeholder,
-                value: this._settings.value,
+                value:
+                    inputTypeEl === 'input' ? this._settings.value : undefined,
                 disabled: this._settings.isDisabled ? 'true' : null,
                 spellcheck: this._settings.shouldSpellCheck ? 'true' : 'false',
                 type: inputTypeEl === 'input' ? this._settings.inputType : null,
+                TextContent:
+                    inputTypeEl === 'textarea'
+                        ? this._settings.value
+                        : undefined,
                 Events: ((): EventsParameters<'input' | 'textarea'> => {
                     const events: EventsParameters<'input' | 'textarea'> = [];
 
@@ -199,11 +204,14 @@ export class Input
         this[onEvent]('common-window-classes', (classes: string[]) => {
             //this._suggester?.suggestContainerEl?.classList.add(...classes);
         });
+    }
 
-        this[onEvent]('loaded', () => {
-            if (this.elements.inputEl.value !== '')
-                this.emitResult(this.elements.inputEl.value);
-        });
+    protected override hasInitialResult(): boolean {
+        return true;
+    }
+
+    protected override getInitialResultValue(): string {
+        return this.elements.inputEl.value;
     }
 
     /**

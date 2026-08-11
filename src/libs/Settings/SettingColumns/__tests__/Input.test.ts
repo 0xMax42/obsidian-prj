@@ -48,6 +48,16 @@ describe('Input', () => {
         expect(input.value).toBe('test value');
     });
 
+    it('should initialize textarea content correctly', () => {
+        const input = new Input(SettingItemMock);
+        input.setType('textarea');
+        input.setValue('test value');
+        input.load();
+
+        expect(input.value).toBe('test value');
+        expect(input.elements.inputEl.textContent).toBe('test value');
+    });
+
     it('should set and get placeholder correctly', () => {
         const input = new Input(SettingItemMock);
         input.setPlaceholder('test placeholder');

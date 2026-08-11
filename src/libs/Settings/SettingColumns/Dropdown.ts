@@ -45,13 +45,20 @@ export class Dropdown
                 Events: ((): EventsParameters<'select'> => {
                     const events: EventsParameters<'select'> = [];
 
-                    if (this._settings.onChangeCallback != null)
+                    if (
+                        this._settings.onChangeCallback != null ||
+                        this._settings.key !== ''
+                    )
                         events.push([
                             'change',
                             (_, __, ___) => {
+                                const selectedValue = this.getSelectedValue();
+
                                 this._settings.onChangeCallback?.(
-                                    this.getSelectedValue(),
+                                    selectedValue,
                                 );
+
+                                this.emitResult(selectedValue);
                             },
                         ]);
 
@@ -105,6 +112,14 @@ export class Dropdown
             key: this.elements.selectEl.value,
             value: this.elements.selectEl.selectedOptions[0].text,
         };
+    }
+
+    protected override hasInitialResult(): boolean {
+        return this.elements.selectEl?.options.length > 0;
+    }
+
+    protected override getInitialResultValue(): SelectItem {
+        return this.getSelectedValue();
     }
 
     /**
