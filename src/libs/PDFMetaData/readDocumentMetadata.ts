@@ -1,4 +1,4 @@
-import { readFile } from 'node:fs/promises';
+import { readFile } from 'fs/promises';
 
 import {
     decodePDFRawStream,
@@ -26,7 +26,7 @@ export interface DocumentMetadata {
 }
 
 export type ReadDocumentMetadata = (
-    filePath: string,
+    data: ArrayBuffer,
 ) => Promise<DocumentMetadata>;
 
 /**
@@ -35,9 +35,7 @@ export type ReadDocumentMetadata = (
  * @param filePath Path to the PDF file.
  * @returns Parsed document metadata.
  */
-export const readDocumentMetadata: ReadDocumentMetadata = async (filePath) => {
-    const data = await readFile(filePath);
-
+export const readDocumentMetadata: ReadDocumentMetadata = async (data) => {
     const pdf = await PDFDocument.load(data, {
         updateMetadata: false,
     });
@@ -104,5 +102,3 @@ export const readDocumentMetadata: ReadDocumentMetadata = async (filePath) => {
 
     return metadata;
 };
-
-TSinjex.getInstance().register('readDocumentMetadata', readDocumentMetadata);
