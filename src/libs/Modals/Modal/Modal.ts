@@ -266,17 +266,6 @@ export class Modal extends DIComponent implements IModal, IModalFluentApi {
      * @inheritdoc
      */
     public override onload(): void {
-        this._open();
-
-        /**
-         * Broadcast the common window classes to the plugin.
-         */
-        if (this._draggableElement?.className != null) {
-            this[broadcastEvent]('common-window-classes', [
-                this._draggableElement.className,
-            ]);
-        }
-
         /**
          * Register on `result` event to get the result of the modal.
          */
@@ -293,6 +282,17 @@ export class Modal extends DIComponent implements IModal, IModalFluentApi {
                 this.requiredResultKeys[key] = required;
             },
         );
+
+        this._open();
+
+        /**
+         * Broadcast the common window classes to the plugin.
+         */
+        if (this._draggableElement?.className != null) {
+            this[broadcastEvent]('common-window-classes', [
+                this._draggableElement.className,
+            ]);
+        }
 
         /**
          * Broadcast the modal loaded event to the plugin.

@@ -8,6 +8,10 @@ import MockLogger, {
 } from 'src/__mocks__/ILogger.mock';
 import { Flow } from 'src/libs/HTMLFlow/Flow';
 import { IFlowSymbol, IFlowTag } from 'src/libs/HTMLFlow/interfaces/IFlowTag';
+import { SettingRow } from 'src/libs/Settings/SettingRow';
+import { Dropdown } from 'src/libs/Settings/SettingColumns/Dropdown';
+import { Input } from 'src/libs/Settings/SettingColumns/Input';
+import { Toggle } from 'src/libs/Settings/SettingColumns/Toggle';
 import { TSinjex } from 'ts-injex';
 import { MockComponent_ } from '../__mocks__/Component.mock';
 import { MissingCallbackError, CallbackError } from '../interfaces/Exceptions';
@@ -31,6 +35,11 @@ TSinjex.register('ILifecycleManager_', mockILifecycleManager);
 TSinjex.register('IDraggableElement_', mockIDraggableElement);
 TSinjex.register('Obsidian.Component_', MockComponent_);
 TSinjex.register('IFlow_', Flow);
+TSinjex.register('ISettingRow_', SettingRow);
+TSinjex.register('SettingFields.input', Input);
+TSinjex.register('SettingFields.dropdown', Dropdown);
+TSinjex.register('SettingFields.toggle', Toggle);
+TSinjex.register('IGenericSuggest_', {});
 
 describe('CustomModal', () => {
     let customModal: Modal;
@@ -121,6 +130,86 @@ describe('CustomModal', () => {
 
         customModal.open();
         expect(customModal.content.contains(div)).toBe(true);
+    });
+
+    test('should initialize input result from configured value', () => {
+        customModal.setOnOpen((modal) => {
+            modal.addSettingRow((row) => {
+                row.add('input', (input) => {
+                    input.setResultKey('title').setValue('Test title');
+                });
+            });
+        });
+
+        customModal.open();
+
+        expect(customModal.result.title).toBe('Test title');
+    });
+
+    test('should initialize dropdown result from configured value', () => {
+        customModal.setOnOpen((modal) => {
+            modal.addSettingRow((row) => {
+                row.add('dropdown', (dropdown) => {
+                    dropdown
+                        .setResultKey('type')
+                        .setOptions([
+                            { key: 'none', value: 'None' },
+                            { key: 'cluster', value: 'Cluster' },
+                        ])
+                        .setValue('cluster', 'Cluster');
+                });
+            });
+        });
+
+        customModal.open();
+
+        expect(customModal.result.type).toEqual({
+            key: 'cluster',
+            value: 'Cluster',
+        });
+    });
+
+    test('should initialize toggle result from configured value', () => {
+        customModal.setOnOpen((modal) => {
+            modal.addSettingRow((row) => {
+                row.add('toggle', (toggle) => {
+                    toggle.setResultKey('hide').setToggled(true);
+                });
+            });
+        });
+
+        customModal.open();
+
+        expect(customModal.result.hide).toBe(true);
+    });
+
+    test('should update dropdown result on change without onChange callback', () => {
+        customModal.setOnOpen((modal) => {
+            modal.addSettingRow((row) => {
+                row.add('dropdown', (dropdown) => {
+                    dropdown.setResultKey('type').setOptions([
+                        { key: 'none', value: 'None' },
+                        { key: 'cluster', value: 'Cluster' },
+                    ]);
+                });
+            });
+        });
+
+        customModal.open();
+
+        const select = customModal.content.querySelector('select');
+
+        if (!(select instanceof HTMLSelectElement)) {
+            throw new Error('Expected select element to exist.');
+        }
+
+        select.value = 'cluster';
+        select.dispatchEvent(new Event('change'));
+
+        expect(customModal.result.type).toEqual({
+            key: 'cluster',
+            value: 'Cluster',
+        });
     });
 
     test('should register and unregister lifecycle events correctly', () => {
