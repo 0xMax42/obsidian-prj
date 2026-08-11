@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [unreleased]
+
+### 🚀 Features
+
+- *(modal)* Prefill metadata form from active PDF metadata - ([3576c94](https://git.0xmax42.io/maxp/obsidian-prj/commit/3576c943ea6305905792ac1e208321b40fd4e783))
+- *(pdfmetadata)* Add PDF XMP document metadata reader - ([d790865](https://git.0xmax42.io/maxp/obsidian-prj/commit/d790865aa818b864194c4a713fd426e19d5fd4a9))
+
+### 🐛 Bug Fixes
+
+- *(pdfmetadata)* Register document metadata reader in plugin DI - ([e941e3d](https://git.0xmax42.io/maxp/obsidian-prj/commit/e941e3db844f99d18f280d979086e4905b1ed499))
+- *(settings)* Emit initial field results and initialize values correctly - ([85ac3aa](https://git.0xmax42.io/maxp/obsidian-prj/commit/85ac3aa63de5862b2f1c02e384c7ff34f766b9cb))
+- *(modal)* Register result events before opening modal - ([94a193b](https://git.0xmax42.io/maxp/obsidian-prj/commit/94a193b9154912212f42c9d5fba87dcc3892e87a))
+
+### 🚜 Refactor
+
+- *(pdfmetadata)* Read PDF metadata from buffer input - ([792bf20](https://git.0xmax42.io/maxp/obsidian-prj/commit/792bf20e031677d61e83279ebb74100de30e2d3e))
+
+### ⚙️ Miscellaneous Tasks
+
+- *(vscode)* Add workspace TypeScript SDK settings - ([f4a2c7b](https://git.0xmax42.io/maxp/obsidian-prj/commit/f4a2c7b56e7b88ee205af86a179f35d623beb8aa))
+
 ## [0.7.1](https://git.0xmax42.io/maxp/obsidian-prj/compare/v0.7.0..v0.7.1) - 2026-08-05
 
 ### 📦 Dependencies
