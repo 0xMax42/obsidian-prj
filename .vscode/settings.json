@@ -1,17 +1,19 @@
 {
-	"files.autoSave": "onFocusChange",
-	"editor.formatOnSave": true,
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"jest.rootPath": "src/",
-	"jest.runMode": "on-demand",
-	"editor.insertSpaces": true,
-	"editor.tabSize": 4,
+    "files.autoSave": "onFocusChange",
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "jest.rootPath": "src/",
+    "jest.runMode": "on-demand",
+    "js/ts.tsdk.path": "node_modules/typescript/lib",
+    "js/ts.tsdk.promptToUseWorkspaceVersion": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
     "editor.detectIndentation": false,
-	"peacock.color": "#80d5e0",
-	"[typescript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[json]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	}
+    "peacock.color": "#80d5e0",
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }
